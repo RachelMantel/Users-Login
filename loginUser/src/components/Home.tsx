@@ -5,15 +5,8 @@ import Update from "./Updata";
 import Login from "./Login";
 import { UserType } from "../models/userType";
 
-// const initiaUser : UserType = {
-//     firstName: "Rochi",
-//     lastName:"Mantel",
-//     email: "",
-//     password: "123",
-//     address: "",
-//     phoneNumber: "",
-// };
-const initiaUser : UserType = {
+
+const initialUser : UserType = {
     firstName: "",
     lastName:"",
     email: "",
@@ -26,7 +19,7 @@ export const UserContext =createContext<{
     user: UserType,
     userDispatch: Dispatch<Action>;
   }>({
-    user:initiaUser,
+    user:initialUser,
     userDispatch: () => null
 });
 
@@ -38,8 +31,7 @@ const Home=()=>{
         setLogIn(f)
     }
 
-
-    const [user, userDispatch] = useReducer(userReducer,initiaUser);
+    const [user, userDispatch] = useReducer(userReducer,initialUser);
 
       return (<>
         <UserContext.Provider value={{ user, userDispatch }}>

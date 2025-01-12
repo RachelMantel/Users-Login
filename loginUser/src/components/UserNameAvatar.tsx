@@ -6,10 +6,9 @@ import { pink } from "@mui/material/colors";
 const UserNameAvatar = () => {
 
     const context = useContext(UserContext);
-
+    console.log(context)
     return(
         <>
-  
         <Box
             sx={{
                 position: "absolute",
@@ -20,11 +19,11 @@ const UserNameAvatar = () => {
                 gap: 1,
             }}
         >
-            <Avatar sx={{ bgcolor: pink[500], width: 56, height: 56 ,fontSize: 30}}>
-                {context.user.firstName[0]}
+            <Avatar sx={{ bgcolor: pink[500], width: 56, height: 56 ,fontSize: 30,zIndex:50}}>
+                {context.user.firstName ? context.user.firstName[0] : ''}
             </Avatar >
-            <span style={{ fontSize: "1.2rem", fontWeight: "bold",fontFamily: "'Roboto', sans-serif" }}>
-                {context.user.firstName+" " + context.user.lastName}
+            <span style={{ fontSize: "1.2rem", fontWeight: "bold",fontFamily: "'Roboto', sans-serif" ,zIndex:50}}>
+                {context.user.firstName}
             </span>
        
         </Box>

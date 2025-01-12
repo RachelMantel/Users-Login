@@ -18,7 +18,10 @@ export type Action={
         data: Partial<UserType>
     } | {
         type: "REMOVE_USER",
-       data: Partial<UserType>,
+       data: Partial<UserType>
+     } | {
+        type: "LOGIN_USER",
+       data: Partial<UserType>   
 }
 
 
@@ -26,16 +29,28 @@ export default  (state: UserType, action: Action): UserType => {
     switch (action.type) {
       case "CREATE_USER":
         const user = action.data;
-        return   {firstName: user.firstName || '',
-        lastName: user.lastName || '',
+        return   {
+        email: user.email || '',
         password: user.password || '',
+        userId: user.userId ||'',
         }
+        case "LOGIN_USER":
+          const user2 = action.data;
+          return {
+            userId: user2.userId,
+            firstName: user2.firstName,
+            lastName: user2.lastName,
+            email: user2.email||'',
+            password: user2.password||'',
+            address: user2.address,
+            phoneNumber: user2.phoneNumber,}
         case "UPDATE_USER":
           const user1 = action.data;
           return {
-            firstName: user1.firstName||'',
+            firstName: user1.firstName,
             lastName: user1.lastName,
-            email: user1.email,
+            userId: user1.userId||'',
+            email: user1.email||'',
             password: user1.password||'',
             address: user1.address,
             phoneNumber: user1.phoneNumber}
